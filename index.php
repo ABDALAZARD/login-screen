@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION["id"])) {
+    header("location: pages/dashboard/dashboard.php");
+} ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -27,6 +32,20 @@
         </div>
     </nav>
     <div class="container">
+
+        <?php
+        if (isset($_GET["msg"])) {
+        ?>
+        <div class="bloco">
+            <h5>
+                <?php echo $_GET["msg"] ?>
+            </h5>
+        </div>
+        <?php
+        }
+        ?>
+
+
         <h3>Minha pagina</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend diam faucibus, convallis ipsum eu,
             elementum dui. Nulla pharetra mollis nisl, et fringilla ex maximus eget. Cras id mattis metus. Fusce
@@ -63,58 +82,90 @@
             pellentesque libero, sed feugiat odio orci in dolor. Suspendisse auctor velit sed massa lobortis dignissim.
             In vel tempor urna. Ut sit amet mauris at nibh luctus finibus vitae ac purus. Vestibulum mollis tristique
             sem ac volutpat. Donec facilisis eleifend metus ac semper. Donec interdum leo mollis, dignissim nunc ut,
-            dapibus lacus. Pellentesque mattis ligula vel nunc egestas pretium vel ut diam.</p>
+            dapibus lacus. Pellentesque mattis ligula vel nunc egestas pretium vel ut diam.
+        </p>
 
-    </div>
-
-    <div id="modalLogin" class="modal">
-        <div class="row">
-            <div class="col s1 offset-s11">
-                <a href="#!" class=" modal-close btn-white black-text closeButton">Fechar</a>
+        <div id="modalLogin" class="modal modalLogin">
+            <div class="row">
+                <div class="col s2 offset-s10">
+                    <a href="#!" class="modal-close btn-white black-text closeButton">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-content">
+                <h4>Login</h4>
+                <p>Modal de login</p>
+                <div>
+                    <form action="src/Login/Login.php" METHOD="POST">
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="email" name="email" placeholder="Insira seu e-mail" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="password" name="password" placeholder="Insira seu e-mail" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <input type='submit' value="Acessar" class="btn white black-text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="modal-content">
-            <h4>Login</h4>
-            <p>Modal de login</p>
-            <div>
-                <form action="src/Login/Login.php" METHOD="POST">
-                    <input type="email" name="email" placeholder="Insira seu e-mail" required>
-                    <input type="password" name="password" placeholder="Insira seu e-mail" required>
-                    <input type='submit' value="Acessar" class="btn white black-text">
-                </form>
+        <div id="modalRegister" class="modal modalRegister">
+            <div class="row">
+                <div class="col s2 offset-s10">
+                    <a href="#!" class="modal-close white black-text closeButton">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-content">
+                <h4>Cadastro</h4>
+                <p>Modal de registro</p>
+                <div>
+                    <form action="src/Register/Register.php" METHOD="POST">
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="email" id="emailRegister" name="emailRegister"
+                                    placeholder="Insira seu e-mail" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="email" id="emailConfirmation" placeholder="Confirme seu e-mail" required>
+                            </div>
+                        </div>
+
+                        <div class="form" id="dataRegister">
+                            <div class="row">
+                                <div class="col s12">
+                                    <input type="password" id="password" name="passwordRegister"
+                                        placeholder="Insira sua senha" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <input type="password" id="passwordConfirmation" placeholder="Confirme sua senha"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <input type='submit' id="submitButton" value="Cadastrar"
+                                        class="btn white black-text">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    </div>
-
-    <div id="modalRegister" class="modal">
-        <div class="row">
-            <div class="col s1 offset-s11 ">
-                <a href="#!" class="modal-close white black-text closeButton">Fechar</a>
-            </div>
-        </div>
-        <div class="modal-content">
-            <h4>Cadastro</h4>
-            <p>Modal de registro</p>
-            <div>
-                <form action="src/Register/Register.php" METHOD="POST">
-                    <input type="email" id="emailRegister" name="emailRegister" placeholder="Insira seu e-mail" required>
-                    <input type="email" id="emailConfirmation" placeholder="Confirme seu e-mail" required>
-
-                    <div class="form" id="dataRegister">
-                        <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
-                        <input type="password" id="passwordConfirmation" placeholder="Confirme sua senha" required>
-                        <input type='submit' id="submitButton" value="Cadastrar" class="btn white black-text">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
+        <script>
         M.AutoInit();
 
         $('#dataRegister').hide();
@@ -131,7 +182,6 @@
                 $('#dataRegister').show();
             } else {
                 $('#dataRegister').hide();
-
             }
 
             if (password === passwordConfirmation && password !== '' && passwordConfirmation !== '') {
@@ -141,7 +191,15 @@
 
             }
         });
-    </script>
+        $(document).ready(function() {
+            $('.bloco').css({
+                'border-radius': '10px'
+            });
+            setTimeout(function() {
+                $('.bloco').fadeOut();
+            }, 3000);
+        });
+        </script>
 </body>
 
 </html>

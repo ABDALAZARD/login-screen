@@ -1,0 +1,8 @@
+CREATE Database Bugman10;
+
+use Bugman10;
+
+CREATE TABLE Usuarios(
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `email` VARCHAR(250) NOT NULL,
+);
