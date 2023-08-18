@@ -6,7 +6,7 @@ class Connection
 
     public function __construct()
     {
-        $this->con = mysqli_connect('localhost', 'root', '123', 'bugman10');
+        $this->con = mysqli_connect('localhost', 'root', '123', 'loginscreen');
     }
 
 
