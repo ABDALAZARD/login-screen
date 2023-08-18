@@ -8,7 +8,7 @@ $password = MD5($_POST['password']);
 
 $database = new Connection;
 
-$findUsers = "SELECT * FROM usuarios WHERE email LIKE '" . $email . "' AND password LIKE '" . $password . "'";
+$findUsers = "SELECT * FROM usuarios WHERE email LIKE '" . $email . "' AND pass LIKE '" . $password . "'";
 $userExists = $database->toDatabase($findUsers);
 if (!$userExists) {
     $msg = "<h5>Erro na tentativa de login!</h5>";
@@ -18,7 +18,7 @@ if (!$userExists) {
     $linhas = mysqli_num_rows($userExists);
     if ($linhas >= 1) {
         $data = mysqli_fetch_array($userExists);
-        if (!strcmp($password, $data['password'])) {
+        if (!strcmp($password, $data['pass'])) {
             $_SESSION['id'] = $data['id'];
             $_SESSION['email'] = $data['email'];
 

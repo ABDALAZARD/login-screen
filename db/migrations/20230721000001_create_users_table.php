@@ -12,7 +12,8 @@ try {
     $createTableQuery = "
         CREATE TABLE usuarios (
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            email VARCHAR(255) NOT NULL
+            email VARCHAR(255) NOT NULL,
+            pass VARCHAR(255) NOT NULL
         )
     ";
 
