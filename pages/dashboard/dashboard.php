@@ -20,6 +20,9 @@
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="../../index.php">Inicio</a></li>
             </ul>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="../../pages/profile/edit.php">Profile</a></li>
+            </ul>
             <ul class="right">
                 <li><a class="waves-effect waves-light btn black modal-trigger "
                         href="../../src/Logout/Logout.php">Deslogar</a>
